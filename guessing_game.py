@@ -8,16 +8,23 @@ def start_game():
   print("The current high score is {} tries.".format(min(scores)))
   try:
     guess = int(input("{}, guess a number between 1 and 10 ".format(name)))
+    if guess < 1 or guess > 10: 
+      raise ValueError("That's not a number between 1 and 10.")
     while guess != number:
        if guess > number:
           print("It's lower, guess again.")
           attempt_count += 1
           guess = int(input("{}, guess a number between 1 and 10 ".format(name)))
-          
+          if guess < 1 or guess > 10: 
+            raise ValueError("That's not a number between 1 and 10.")
+            
        elif guess < number: 
           print("It's higher, guess again.")
           attempt_count += 1
           guess = int(input("{}, guess a number between 1 and 10 ".format(name)))
+          if guess < 1 or guess > 10: 
+            raise ValueError("That's not a number between 1 and 10.")
+            
         
   except ValueError:
     
@@ -37,7 +44,7 @@ def start_game():
     
     play_again = input("Would you like to play again? (yes/no) ")
 
-    if play_again == 'yes':
+    if play_again.lower() == 'yes':
       start_game()
   
     else:
